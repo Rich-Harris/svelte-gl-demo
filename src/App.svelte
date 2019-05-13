@@ -31,7 +31,7 @@
 			frame = requestAnimationFrame(loop);
 
 			light.x = 3 * Math.sin(Date.now() * 0.001);
-			light.y = 5 + 3 * Math.sin(Date.now() * 0.0004);
+			light.y = 2.5 + 2 * Math.sin(Date.now() * 0.0004);
 			light.z = 3 * Math.cos(Date.now() * 0.002);
 		};
 
@@ -57,20 +57,21 @@
 		<PerspectiveCamera {location} {target} near={0.01}/>
 	</OrbitControls>
 
-	<AmbientLight intensity={0.6}/>
+	<AmbientLight intensity={0.3}/>
 
 	<Sphere
 		location={[light.x,light.y + 0.2,light.z]}
 		color={second}
+		subdivisions={3}
 		scale={0.1}
 	/>
 	<PointLight
 		location={[light.x,light.y,light.z]}
 		color={second}
-		intensity={0.2}
+		intensity={0.6}
 	/>
 
-	<DirectionalLight direction={[-1,-1,-1]} intensity={0.8}/>
+	<DirectionalLight direction={[-1,-1,-1]} intensity={0.5}/>
 
 	<Plane
 		color={0xffffff}

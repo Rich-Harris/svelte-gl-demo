@@ -21,6 +21,6 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "@sveltejs/gl": "0.0.1"
+    "@sveltejs/gl": "0.0.2"
   }
 }
