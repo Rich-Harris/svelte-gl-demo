@@ -1,20 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import {
-		Scene,
-		Material,
-		AmbientLight,
-		PointLight,
-		DirectionalLight,
-		OrbitControls,
-		PerspectiveCamera,
-		Group,
-		Plane,
-		Cone,
-		Cube,
-		Sphere,
-		Overlay
-	} from '@sveltejs/gl';
+	import { Scene, Material, AmbientLight, PointLight, DirectionalLight, OrbitControls, PerspectiveCamera, Group, Plane, Cone, Cube, Sphere, Overlay } from '@sveltejs/gl';
 	import SvelteBox from './SvelteBox.svelte';
 	import { logotype } from './images.js';
 
@@ -58,62 +44,22 @@
 	</OrbitControls>
 
 	<AmbientLight intensity={0.3}/>
-
-	<Sphere
-		location={[light.x,light.y + 0.2,light.z]}
-		color={second}
-		subdivisions={3}
-		scale={0.1}
-	/>
-	<PointLight
-		location={[light.x,light.y,light.z]}
-		color={second}
-		intensity={0.6}
-	/>
-
 	<DirectionalLight direction={[-1,-1,-1]} intensity={0.5}/>
 
-	<Plane
-		color={0xffffff}
-		location={[0,-0.01,0]}
-		rotation={[-90,0,0]}
-		scale={10}
-	/>
+	<!-- moving light -->
+	<Sphere location={[light.x,light.y + 0.2,light.z]} color={second} subdivisions={3} scale={0.1} />
+	<PointLight location={[light.x,light.y,light.z]} color={second} intensity={0.6} />
 
-	<!-- TODO figure out alpha channels in textures -->
-	<!-- <Plane
-		color={0xffffff}
-		map={logotype}
-		location={[0,1,-2]}
-		scale={[4, 1, 0]}
-	/> -->
+	<!-- floor -->
+	<Plane color={0xffffff} location={[0,-0.01,0]} rotation={[-90,0,0]} scale={10} />
 
-	<Sphere
-		color={prime}
-		alpha={0.7}
-		subdivisions={4}
-		scale={0.3}
-		location={[0,0.3,0]}
-	/>
+	<!-- transparent balls -->
+	<Sphere color={prime} alpha={0.7} subdivisions={4} scale={0.3} location={[0,0.3,0]} />
+	<Sphere color={flash} alpha={0.7} subdivisions={4} scale={0.7} location={[-1,0.7,-1]} />
+	<Sphere color={second} alpha={0.7} subdivisions={4} scale={0.2} location={[-0.8,0.2,0]} />
 
-	<Sphere
-		color={flash}
-		alpha={0.7}
-		subdivisions={4}
-		scale={0.7}
-		location={[-1,0.7,-1]}
-	/>
-
-	<Sphere
-		color={second}
-		alpha={0.7}
-		subdivisions={4}
-		scale={0.2}
-		location={[-0.8,0.2,0]}
-	/>
-
+	<!-- logo boxes -->
 	<SvelteBox location={[-2,0.5,0]} rotation={[0,-20,0]}/>
-
 	<SvelteBox location={[1,0.75,-1]} rotation={[0,30,0]} scale={1.5}/>
 </Scene>
 
