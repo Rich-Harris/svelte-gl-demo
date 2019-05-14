@@ -40,7 +40,7 @@
 
 <Scene>
 	<OrbitControls maxPolarAngle={Math.PI / 2} let:location let:target>
-		<PerspectiveCamera {location} {target} near={0.01}/>
+		<PerspectiveCamera {location} {target} near={0.01} far={1000}/>
 	</OrbitControls>
 
 	<AmbientLight intensity={0.3}/>
