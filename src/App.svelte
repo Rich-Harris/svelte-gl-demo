@@ -1,6 +1,21 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Scene, Material, AmbientLight, PointLight, DirectionalLight, OrbitControls, PerspectiveCamera, Group, Plane, Cone, Cube, Sphere, Overlay } from '@sveltejs/gl';
+	import {
+		Scene,
+		Material,
+		AmbientLight,
+		PointLight,
+		DirectionalLight,
+		OrbitControls,
+		PerspectiveCamera,
+		Group,
+		Plane,
+		Cone,
+		Cube,
+		Sphere,
+		Overlay,
+		Target
+	} from '@sveltejs/gl';
 	import SvelteBox from './SvelteBox.svelte';
 	import { logotype } from './images.js';
 
@@ -39,24 +54,27 @@
 </style>
 
 <Scene>
+	<Target id="center" location={[0, 1, 0]}/>
+
 	<OrbitControls maxPolarAngle={Math.PI / 2} let:location let:target>
-		<PerspectiveCamera {location} {target} near={0.01} far={1000}/>
+		<!-- TODO need a way for controls to set target -->
+		<PerspectiveCamera {location} lookAt="center" near={0.01} far={1000}/>
 	</OrbitControls>
 
 	<AmbientLight intensity={0.3}/>
 	<DirectionalLight direction={[-1,-1,-1]} intensity={0.5}/>
 
 	<!-- moving light -->
-	<Sphere location={[light.x,light.y + 0.2,light.z]} color={second} subdivisions={3} scale={0.1} />
+	<Sphere location={[light.x,light.y + 0.2,light.z]} color={second} turns={12} bands={12} scale={0.1} />
 	<PointLight location={[light.x,light.y,light.z]} color={second} intensity={0.6} />
 
 	<!-- floor -->
 	<Plane color={0xffffff} location={[0,-0.01,0]} rotation={[-90,0,0]} scale={10} />
 
 	<!-- transparent balls -->
-	<Sphere color={prime} alpha={0.7} subdivisions={4} scale={0.3} location={[0,0.3,0]} />
-	<Sphere color={flash} alpha={0.7} subdivisions={4} scale={0.7} location={[-1,0.7,-1]} />
-	<Sphere color={second} alpha={0.7} subdivisions={4} scale={0.2} location={[-0.8,0.2,0]} />
+	<Sphere color={prime} alpha={0.7} turns={60} bands={60} scale={0.3} location={[0,0.3,0]} />
+	<Sphere color={flash} alpha={0.7} turns={60} bands={60} scale={0.7} location={[-1,0.7,-1]} />
+	<Sphere color={second} alpha={0.7} turns={60} bands={60} scale={0.2} location={[-0.8,0.2,0]} />
 
 	<!-- logo boxes -->
 	<SvelteBox location={[-2,0.5,0]} rotation={[0,-20,0]}/>

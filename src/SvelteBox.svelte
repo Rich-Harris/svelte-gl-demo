@@ -67,7 +67,7 @@
 		// ctx.fillText('back',   7/2 * s, 3/2 * s);
 		// ctx.fillText('bottom', 3/2 * s, 5/2 * s);
 
-		material.map = canvas;
+		material.set_image('map', canvas);
 
 		// document.body.appendChild(canvas);
 	};
