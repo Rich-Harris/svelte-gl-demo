@@ -1,6 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import glsl from 'rollup-plugin-glsl';
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
 import { terser } from 'rollup-plugin-terser';
@@ -24,6 +25,10 @@ export default {
 				}
 			}
 		},
+
+		glsl({
+			include: ['**/*.glsl', '../../../**/*.glsl']
+		}),
 
 		svelte({
 			// enable run-time checks when not in production
