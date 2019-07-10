@@ -57,8 +57,7 @@
 	<Target id="center" location={[0, 1, 0]}/>
 
 	<OrbitControls maxPolarAngle={Math.PI / 2} let:location let:target>
-		<!-- TODO need a way for controls to set target -->
-		<PerspectiveCamera {location} lookAt="center" near={0.01} far={1000}/>
+		<PerspectiveCamera {location} lookAt={target} near={0.01} far={1000}/>
 	</OrbitControls>
 
 	<AmbientLight intensity={0.3}/>
