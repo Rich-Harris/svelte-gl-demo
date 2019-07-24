@@ -4,12 +4,14 @@
 	import { Box, Material } from '@sveltejs/gl';
 	import { logo } from './images.js';
 
-	const material = new Material({
-		color: [1, 1, 1]
-	});
+	const material = {
+		'u-color': [1, 1, 1]
+	};
 
 	const img = new Image();
 	img.src = logo;
+
+	let canvas;
 
 	img.onload = () => {
 		const aspect = img.naturalWidth / img.naturalHeight;
@@ -35,7 +37,7 @@
 			);
 		});
 
-		const canvas = document.createElement('canvas');
+		canvas = document.createElement('canvas');
 		canvas.width = canvas.height = s * 4;
 
 		// use this layout:
@@ -67,7 +69,7 @@
 		// ctx.fillText('back',   7/2 * s, 3/2 * s);
 		// ctx.fillText('bottom', 3/2 * s, 5/2 * s);
 
-		material.set_image('map', canvas);
+		// material.set_image('map', canvas);
 
 		// document.body.appendChild(canvas);
 	};
@@ -77,4 +79,4 @@
 	};
 </script>
 
-<Box {...$$props} {material}/>
+<Box {...$$props} {...material} u-colormap={canvas}/>

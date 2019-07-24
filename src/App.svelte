@@ -38,8 +38,8 @@
 	<GL.DirectionalLight direction={[-1,-1,-1]} intensity={0.5}/>
 
 	<!-- moving light -->
-	<GL.Sphere location={[light.x,light.y + 0.2,light.z]} color={second} turns={12} bands={12} scale={0.1} />
-	<GL.PointLight location={[light.x,light.y,light.z]} color={second} intensity={0.6} />
+	<GL.Sphere location={[light.x,light.y + 0.2,light.z]} u-color={second} turns={12} bands={12} scale={0.1} />
+	<GL.PointLight location={[light.x,light.y,light.z]} u-color={second} intensity={0.6} />
 
 	<!-- floor -->
 	<GL.Plane

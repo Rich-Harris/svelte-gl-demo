@@ -27,7 +27,8 @@ export default {
 		},
 
 		glsl({
-			include: ['**/*.glsl', '../../../**/*.glsl']
+			include: ['**/*.glsl', '../../../**/*.glsl'],
+			compress: false
 		}),
 
 		svelte({
