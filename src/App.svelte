@@ -49,6 +49,13 @@
 		scale={10}
 	/>
 
+	<GL.Plane
+		u-color={0xff3e00}
+		u-colormap="textures/svelte-logotype.png"
+		location={[0,1,-6]}
+		scale={[5.357548057,1,1]}
+	/>
+
 	<!-- transparent balls -->
 	<GL.Sphere u-color={prime} u-alpha={0.7} turns={60} bands={60} scale={0.3} location={[0,0.3,0]} />
 	<GL.Sphere u-color={flash} u-alpha={0.7} turns={60} bands={60} scale={0.7} location={[-1,0.7,-1]} />
